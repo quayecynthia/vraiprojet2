@@ -54,7 +54,7 @@ void Graph::make_example()
     m_interface = std::make_shared<GraphInterface>(50, 0, 750, 600); /// le POINTEUR sur l'interface associée
     // La ligne précédente est en gros équivalente à :
     // m_interface = new GraphInterface(50, 0, 750, 600);
-
+    std::cout << "test" << std::endl;
     charger_fichier("Fichier.txt");
     //sauver_fichier("Fichier.txt");
 
