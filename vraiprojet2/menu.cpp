@@ -72,6 +72,8 @@ void Menu::gestion_menu2(Graph g)
                 {
                     setChoix(2);
 
+
+
                 }
 
                 //Graphe2

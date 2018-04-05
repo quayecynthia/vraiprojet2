@@ -106,9 +106,6 @@ class GraphInterface
         /// Dans cette boite seront ajoutés des boutons de contrôle etc...
         grman::WidgetBox m_tool_box;
 
-        /// Dans cette boite on ecrit les mots chargement et sauvegarde
-        grman::WidgetText m_label_chargement;
-        grman::WidgetText m_label_sauvegarde;
 
         // A compléter éventuellement par des widgets de décoration ou
         // d'édition (boutons ajouter/enlever ...)
@@ -131,14 +128,14 @@ class Graph
         ///nombre d'aretes
         int m_nbaretes;
 
-        ///matrice d'adjacence
-        std::vector <std::vector <double> > m_matrice;
-
         /// La "liste" des arêtes
         std::map<int, Edge> m_edges;
 
         /// La liste des sommets
         std::map<int, Vertex> m_vertices;
+
+        ///Matrice d'adjacence du graphe orienté
+        std::vector<std::vector <int>> m_matAdj;
 
         /// le POINTEUR sur l'interface associée, nullptr -> pas d'interface
         std::shared_ptr<GraphInterface> m_interface = nullptr;
@@ -151,8 +148,9 @@ class Graph
         Graph (GraphInterface *interface=nullptr) :
             m_interface(interface)  {  }
 
-        void add_interfaced_vertex(int indice, int population, int x, int y,int besoin, int apport, int periode, std::string pic_name="", int pic_idx=0 );
-        void add_interfaced_edge(int indice, int vert1, int vert2, double weight=0);
+
+        void add_interfaced_vertex(int idx, int population, int &x, int &y,int besoin, int apport, int periode, std::string pic_name="", int pic_idx=0 );
+        void add_interfaced_edge(int idx, int vert1, int vert2, double weight=0);
 
         /// Méthode spéciale qui construit un graphe arbitraire (démo)
         /// Voir implémentation dans le .cpp
@@ -161,13 +159,26 @@ class Graph
         void make_example();
 
         void charger_fichier(std::string nomfichier);
-        void sauver_fichier(std::string nomfichier);
+        //void sauver_fichier(std::string nomfichier);
 
         void composantes_connexes();
-        void creer_matrice();
 
         /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface
         void update();
+
+        ///Méthode pour trouver une composante fortement connexe, la fonction retourne un tableau avec les sommets qui forment une
+        ///compo fortement connexe
+        std::vector<int> uneComposanteFortementConnexe();
+
+        ///Méthode pour trouver toutes les composantes fortement connexes: l'algo détermine une compo fortement connexe grâce à l'algo précédent
+        ///puis parmi les noeuds qui ne font pas partie de la compo fortement connexe, on en choisit un pour réitérer l'algo jusqu'à ce que
+        ///tous les noeuds appartiennent à une compo fortement connexe
+        void lesComposantesFortementConnexes();
+
+
+        ///Méthode pour les intéractions dans la barre d'outils (charger, sauvegarder, ajouter, enlever...)
+        ///par exemple sélectionner plusieurs sommets puis les supprimer avec des boutons dans la barre
+
 };
 
 
