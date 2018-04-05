@@ -79,6 +79,11 @@ class Vertex
         bool m_stabilite;
         bool estActif;
 
+
+
+      /*  int m_posx;
+        int m_posy;*/
+
         /// le POINTEUR sur l'interface associée, nullptr -> pas d'interface
         std::shared_ptr<VertexInterface> m_interface = nullptr;
 
@@ -94,8 +99,6 @@ class Vertex
         Vertex (int indice=0, int population=0, int besoin=0, int apport=0, int periode=0, VertexInterface *interface=nullptr) :
             m_indice(indice), m_population(population),m_besoin(besoin),m_apport(apport),m_periode(periode), m_interface(interface)  {  }
 
-        double getX() const;
-        double getY() const;
         /// Vertex étant géré par Graph ce sera la méthode update de graph qui appellera
         /// le pre_update et post_update de Vertex (pas directement la boucle de jeu)
         /// Voir l'implémentation Graph::update dans le .cpp

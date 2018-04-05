@@ -302,7 +302,7 @@ void WidgetImage::draw()
                     BOX
 ****************************************************/
 
-void WidgetBox::interact_focus()
+void WidgetBox::interact_focus()////////////////////////////////////
 {
     if (mouse_click)
     {

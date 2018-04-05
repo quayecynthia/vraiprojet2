@@ -151,6 +151,7 @@ class Widget
         void set_margin(int margin) { m_margin=margin; reframe(); }
         void set_border(int border) { m_border=border; reframe(); }
         void set_padding(int padding) { m_padding=padding; reframe(); }
+        //void set_(int ) { m_=; }
 
         // Usage "interne"
         Frame get_parent_frame()

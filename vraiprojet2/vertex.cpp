@@ -16,7 +16,7 @@
 VertexInterface::VertexInterface(int idx, int x, int y, std::string pic_name, int pic_idx)
 {
     // La boite englobante
-    m_top_box.get_pos();
+    //m_top_box.get_pos();
     m_top_box.set_pos(x, y); ///position de l'image
     m_top_box.set_dim(130, 100); ///taille de l'image
     m_top_box.set_moveable(); ///mouvement de l'image
@@ -52,15 +52,6 @@ VertexInterface::VertexInterface(int idx, int x, int y, std::string pic_name, in
 
 ///Constructeur de vertex
 
-double Vertex::getX () const
-{
-    return m_interface->m_top_box.get_frame().pos.x;
-}
-
-double Vertex::getY () const
-{
-    return m_interface->m_top_box.get_frame().pos.y;
-}
 
 /// Gestion du Vertex avant l'appel à l'interface
 void Vertex::pre_update()
@@ -84,6 +75,8 @@ void Vertex::post_update()
 
     /// Reprendre la valeur du slider dans la donnée m_population locale
     m_population = m_interface->m_slider_population.get_population();
+//    m_posx=m_interface->m_top_box.get_posx();
+//    m_posy=m_interface->m_top_box.get_posy();
 
 }
 
