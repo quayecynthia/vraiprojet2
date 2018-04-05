@@ -1,0 +1,6 @@
+4
+0
+0 30 28 498 15 15 0 requin.jpg
+1 20 222 237 15 15 0 thon.jpg
+2 10 431 414 15 15 0 crevettes.jpg
+3 10 100 460 15 15 0 maquereaux.jpg
